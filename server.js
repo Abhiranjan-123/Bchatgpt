@@ -321,10 +321,12 @@ app.get("/reload", (req, res) => {
   res.json({ message: "Dataset reloaded successfully ✅" });
 });
 
-const frontendPath = path.join(__dirname, "../frontend");
-app.use(express.static(frontendPath));
-app.use((req, res) => res.sendFile(path.join(frontendPath, "index.html")));
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running successfully!");
+});
+
 
 app.listen(PORT, () =>
   console.log(`✅ Server running at http://localhost:${PORT}`)
 );
+
